@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Namrata Pagariya — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1E8;
+    --paper-2:#EDE7D8;
+    --ink:#1C1B19;
+    --sage:#8FA687;
+    --sage-deep:#5F7657;
+    --coral:#E38A68;
+    --butter:#EFBE4F;
+    --lavender:#AFA2D6;
+    --sky:#89AFCF;
+    --line:#CFC6AE;
+    --card:#FBF9F2;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--butter); color:var(--ink);}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3{margin:0; font-family:'Fraunces', serif;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  /* subtle paper grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    background-image: radial-gradient(rgba(0,0,0,0.035) 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity:0.5;
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ================= COVER ================= */
+  .cover{
+    display:flex; flex-direction:column; justify-content:space-between; gap:18px;
+    padding:36px 32px 26px;
+    border-bottom:1px solid var(--line);
+  }
+  .cover-top{display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap;}
+  .cover-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    border:1px solid var(--ink); border-radius:999px; padding:6px 14px;
+  }
+  .cover-title{
+    font-size:clamp(34px, 5.4vw, 76px);
+    line-height:1.02;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    margin:6px 0;
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:0.26em;
+  }
+  .cover-title .name-first{color:var(--ink);}
+  .cover-title .name-last{
+    font-style:italic;
+    font-weight:500;
+    color:var(--coral);
+    -webkit-text-stroke:1px var(--ink);
+    text-shadow:3px 3px 0 var(--butter);
+  }
+  .cover-bottom{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace; font-size:13px;
+  }
+  .cover-meta{line-height:1.9;}
+  .cover-meta b{font-family:'Space Grotesk',sans-serif; font-weight:600;}
+  .scroll-cue{display:flex; align-items:center; gap:8px; color:var(--sage-deep);}
+  .scroll-cue span{
+    display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--coral);
+    animation:pulse 1.6s infinite ease-in-out;
+  }
+  @keyframes pulse{0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.5); opacity:.4;}}
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative; z-index:2;
+    padding:56px 0 60px;
+  }
+
+  /* hero content */
+  .hero-name{
+    font-size:clamp(46px, 6vw, 68px);
+    font-weight:600;
+    letter-spacing:-0.01em;
+    display:flex; flex-wrap:wrap; gap:0.2em;
+  }
+  .hero-name .swash{font-style:italic; font-weight:500; color:var(--coral);}
+  .hero-tagline{
+    margin-top:18px; max-width:560px;
+    font-size:17px; line-height:1.65; color:#3b3934;
+  }
+  .hero-tagline b{font-weight:600; color:var(--ink);}
+  .hero-contact{
+    margin-top:26px; display:flex; gap:24px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace; font-size:13px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:14px 0;
+  }
+  .hero-contact a{text-decoration:none; border-bottom:1px solid transparent; transition:border-color .2s;}
+  .hero-contact a:hover{border-color:var(--ink);}
+
+  /* stickers */
+  .stickers{margin-top:30px; display:flex; flex-wrap:wrap; gap:14px; align-items:center;}
+  .sticker{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; font-weight:500;
+    padding:9px 18px; display:inline-block;
+    box-shadow:0 4px 0 rgba(0,0,0,0.08);
+  }
+  .sticker.s1{background:var(--sky); color:#fff; border-radius:999px 999px 999px 4px; transform:rotate(-3deg);}
+  .sticker.s2{background:var(--sage); color:#fff; border-radius:60% 40% 55% 45% / 55% 45% 55% 45%; transform:rotate(2deg);}
+  .sticker.s3{background:var(--coral); color:#fff; border-radius:4px 999px 999px 999px; transform:rotate(-1.5deg);}
+  .sticker.s4{background:var(--lavender); color:#fff; border-radius:16px; transform:rotate(3deg);}
+
+  /* ================= DIVIDER ================= */
+  .divider{border-top:2px dashed var(--line); margin:10px 0;}
+
+  /* ================= TWO COL ================= */
+  .section{padding:70px 0;}
+  .section-label{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--sage-deep); margin-bottom:10px; display:block;
+  }
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:64px;}
+  .section h2{font-size:34px; font-weight:600; margin-bottom:26px;}
+
+  /* education */
+  .edu-item{display:flex; gap:18px; margin-bottom:22px;}
+  .pill-date{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; white-space:nowrap; height:fit-content;
+    border:1px solid var(--ink); border-radius:999px; padding:6px 12px;
+  }
+  .edu-item b{display:block; font-size:16px; font-weight:600;}
+  .edu-item span.sub{display:block; font-size:14px; color:#5b5748; margin-top:2px;}
+
+  /* skills */
+  .tag-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;}
+  .tag{
+    font-size:13.5px; padding:8px 16px; border-radius:999px; border:1px solid var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+  }
+  .tag.fill{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+
+  /* ================= EXPERIENCE + STACK ================= */
+  .exp-item{margin-bottom:26px; padding-bottom:26px; border-bottom:1px solid var(--line);}
+  .exp-item:last-child{border-bottom:none;}
+  .exp-top{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;}
+  .exp-top b{font-size:17px; font-weight:600;}
+  .exp-item p{margin:8px 0 0; font-size:14.5px; line-height:1.6; color:#4a473d;}
+
+  .stack-panel{background:var(--ink); border-radius:16px; padding:22px; color:var(--paper);}
+  .stack-panel h3{
+    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:16px;
+    background:var(--paper); color:var(--ink); display:inline-block; padding:6px 14px; border-radius:8px; margin-bottom:18px;
+  }
+  .stack-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:10px;}
+  .stack-chip{
+    display:flex; align-items:center; gap:10px;
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.16);
+    border-radius:10px; padding:10px 12px;
+    font-family:'Space Grotesk', sans-serif; font-size:13px; color:#fff;
+  }
+  .stack-chip .dot{width:9px; height:9px; border-radius:50%; flex:none;}
+  .dot.c1{background:var(--sky);}
+  .dot.c2{background:var(--coral);}
+  .dot.c3{background:var(--sage);}
+  .dot.c4{background:var(--lavender);}
+  .dot.c5{background:var(--butter);}
+  .dot.c6{background:#D9D2BE;}
+
+  /* ================= PROJECTS (postcards) ================= */
+  .projects-head{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:40px;}
+  .postcard-grid{display:grid; grid-template-columns:1fr 1fr; gap:38px 30px;}
+  .postcard{
+    background:var(--card); border:1px solid var(--line); border-radius:2px;
+    padding:20px 20px 22px; position:relative;
+    box-shadow:0 10px 26px rgba(28,27,25,0.08);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .postcard:nth-child(odd){transform:rotate(-0.8deg);}
+  .postcard:nth-child(even){transform:rotate(0.9deg);}
+  .postcard:hover{transform:rotate(0deg) translateY(-4px); box-shadow:0 18px 34px rgba(28,27,25,0.14);}
+  .postcard::before{
+    content:""; position:absolute; top:-10px; left:22px; width:56px; height:20px;
+    background:rgba(175,162,214,0.5); transform:rotate(-3deg);
+  }
+  .fig-label{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--sage-deep); letter-spacing:.05em;}
+  .postcard h3{font-size:21px; font-weight:600; margin-top:6px;}
+  .postcard .stamp{
+    position:absolute; top:16px; right:16px; width:44px; height:44px; border:2px dotted var(--ink);
+    display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono', monospace; font-size:9px;
+    text-align:center; color:#6b6455; line-height:1.2; transform:rotate(6deg);
+  }
+  .postcard p{font-size:14px; line-height:1.6; color:#454236; margin:10px 0 14px;}
+  .postcard .tag-row .tag{font-size:11.5px; padding:5px 12px;}
+
+  /* ================= COMMUNITY ================= */
+  .community{
+    background:var(--sage); color:#fff; border-radius:20px; padding:50px 44px;
+    display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center;
+  }
+  .community h2{color:#fff; font-size:30px; margin-bottom:14px;}
+  .community p{font-size:15px; line-height:1.7; color:rgba(255,255,255,0.92);}
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  .stat{border-left:2px solid rgba(255,255,255,0.5); padding-left:14px;}
+  .stat b{display:block; font-family:'Fraunces', serif; font-size:38px; font-weight:600;}
+  .stat span{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:rgba(255,255,255,0.85);}
+
+  /* ================= FOOTER ================= */
+  .footer{
+    margin-top:40px; padding:90px 0 60px; border-top:1px solid var(--line);
+    display:flex; flex-direction:column; gap:34px;
+  }
+  .footer-cta{font-size:clamp(34px, 5.4vw, 58px); font-weight:600; max-width:760px; line-height:1.08;}
+  .footer-cta em{color:var(--coral); font-style:italic; font-weight:500;}
+  .footer-links{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace; font-size:13.5px;
+  }
+  .footer-links .col{display:flex; flex-direction:column; gap:8px;}
+  .footer-links a{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px;}
+  .footer-links a:hover{border-color:var(--ink);}
+  .signature{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:600; font-size:clamp(48px, 9vw, 96px);
+    text-align:right; color:var(--ink); margin-top:10px;
+  }
+
+  @media (max-width: 880px){
+    .two-col{grid-template-columns:1fr; gap:44px;}
+    .postcard-grid{grid-template-columns:1fr;}
+    .community{grid-template-columns:1fr;}
+    .stack-grid{grid-template-columns:1fr;}
+    .footer-links{flex-direction:column; align-items:flex-start;}
+  }
+
+  :focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<!-- ================= COVER ================= -->
+<section class="cover">
+  <div class="cover-top">
+    <span class="cover-tag">Portfolio &middot; 2026</span>
+    <span class="cover-tag mono">Computer Engineering</span>
+  </div>
+  <h1 class="cover-title">
+    <span class="name-first">Namrata</span><span class="name-last">Pagariya</span>
+  </h1>
+  <div class="cover-bottom">
+    <div class="cover-meta">
+      <b>SDE &amp; AI Engineering</b><br>
+      Nashik, Maharashtra, India · Class of 2027
+    </div>
+    <div class="scroll-cue"><span></span> scroll</div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero reveal">
+    <h1 class="hero-name">Hi, I'm <span class="swash">Namrata</span></h1>
+    <p class="hero-tagline">
+      <b>Final-year Computer Engineering student</b> building full-stack platforms and ML-driven tools —
+      from a job-search assistant to a face-recognition school app. Currently aiming for
+      <b>SDE and MLE/AI-ML roles</b> at product-based companies.
+    </p>
+    <div class="hero-contact">
+      <a href="mailto:namratapagariya1485@gmail.com">namratapagariya1485@gmail.com</a>
+      <a href="https://www.linkedin.com/in/namrata-pagariya/" target="_blank" rel="noopener">linkedin.com/in/namrata-pagariya</a>
+      <a href="https://github.com/namratapagariya" target="_blank" rel="noopener">github.com/namratapagariya</a>
+      <a href="https://leetcode.com/u/namratajain14/" target="_blank" rel="noopener">leetcode.com/u/namratajain14</a>
+    </div>
+    <div class="stickers">
+      <span class="sticker s1">builder</span>
+      <span class="sticker s2">GDG lead</span>
+      <span class="sticker s3">detail-oriented</span>
+      <span class="sticker s4">curious mind</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= EDUCATION + SKILLS ================= -->
+  <section class="section two-col reveal">
+    <div>
+      <span class="section-label">Education</span>
+      <h2>What I've studied</h2>
+      <div class="edu-item">
+        <span class="pill-date mono">✦ 2023–27</span>
+        <div>
+          <b>B.E. Computer Engineering</b>
+          <span class="sub">SNJB's KBJ College of Engineering, Nashik</span>
+          <span class="sub">SGPA 8.96</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="section-label">Skills</span>
+      <h2>What I work with</h2>
+      <div class="tag-row">
+        <span class="tag fill">Python</span>
+        <span class="tag">HTML / CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">React</span>
+        <span class="tag fill">FastAPI</span>
+        <span class="tag">Django</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express</span>
+        <span class="tag fill">Machine Learning</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag fill">Leadership</span>
+        <span class="tag">SQLite</span>
+        <span class="tag">Prisma / OAuth 2.0</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= EXPERIENCE + STACK ================= -->
+  <section class="section two-col reveal">
+    <div>
+      <span class="section-label">Experience</span>
+      <h2>Where I've spent my time</h2>
+
+      <div class="exp-item">
+        <div class="exp-top"><b>GDG On Campus — Lead</b><span class="pill-date mono">Current</span></div>
+        <p>Managing a core team and coordinating events for 200+ students on campus.</p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top"><b>BlockVerse 2026 — Co-initiator &amp; Lead</b><span class="pill-date mono">Apr 2026</span></div>
+        <p>Hybrid hackathon drawing 300+ students, 30+ faculty, and 10+ industry personalities.
+        Sponsored by Winjit Technologies, Medimaze, and YSM Infotech.</p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top"><b>Synergy Hackathon</b><span class="pill-date mono">Apr 2026</span></div>
+        <p>Advanced from Round 1 to Round 2.</p>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top"><b>Smart India Hackathon (SIH)</b><span class="pill-date mono">2026</span></div>
+        <p>Participant.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="stack-panel">
+        <h3>tech stack</h3>
+        <div class="stack-grid">
+          <div class="stack-chip"><span class="dot c1"></span>Python</div>
+          <div class="stack-chip"><span class="dot c2"></span>C++</div>
+          <div class="stack-chip"><span class="dot c3"></span>JavaScript</div>
+          <div class="stack-chip"><span class="dot c4"></span>HTML / CSS</div>
+          <div class="stack-chip"><span class="dot c5"></span>React</div>
+          <div class="stack-chip"><span class="dot c6"></span>Django</div>
+          <div class="stack-chip"><span class="dot c1"></span>FastAPI</div>
+          <div class="stack-chip"><span class="dot c2"></span>SQL</div>
+          <div class="stack-chip"><span class="dot c3"></span>NumPy / Pandas</div>
+          <div class="stack-chip"><span class="dot c4"></span>scikit-learn</div>
+          <div class="stack-chip"><span class="dot c5"></span>OpenCV</div>
+          <div class="stack-chip"><span class="dot c1"></span>Node.js</div>
+          <div class="stack-chip"><span class="dot c6"></span>PostgreSQL</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= PROJECTS ================= -->
+  <section class="section reveal">
+    <div class="projects-head">
+      <div>
+        <span class="section-label">Selected Work</span>
+        <h2>Postcards from the build log</h2>
+      </div>
+    </div>
+
+    <div class="postcard-grid">
+      <div class="postcard">
+        <div class="stamp">JOB<br>SEARCH</div>
+        <span class="fig-label">fig. 2.0 — jobify</span>
+        <h3>Jobify</h3>
+        <p>Full-stack job platform with scraping from Indeed/Naukri, a TF-IDF &amp; cosine-similarity
+        resume analyzer, and APScheduler-based cold email automation. Deployed on Vercel/Render.</p>
+        <div class="tag-row">
+          <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">SQLite</span>
+        </div>
+      </div>
+
+      <div class="postcard">
+        <div class="stamp">FACE<br>ID</div>
+        <span class="fig-label">fig. 3.0 — parentconnect</span>
+        <h3>ParentConnect</h3>
+        <p>Role-based school platform with Admin, Teacher, and Parent access levels, built around
+        face recognition for attendance and identity verification.</p>
+        <div class="tag-row">
+          <span class="tag">Django MVT</span><span class="tag">OpenCV</span><span class="tag">face_recognition</span>
+        </div>
+      </div>
+
+      <div class="postcard">
+        <div class="stamp">SUB<br>TRACK</div>
+        <span class="fig-label">fig. 4.0 — subtracker</span>
+        <h3>SubTracker</h3>
+        <p>Subscription-tracking app with OAuth 2.0 login and a Groq LLaMA 3.3 integration for
+        smarter renewal insights, backed by Prisma and PostgreSQL.</p>
+        <div class="tag-row">
+          <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">Prisma</span>
+        </div>
+      </div>
+
+      <div class="postcard">
+        <div class="stamp">FLOW<br>GRAPH</div>
+        <span class="fig-label">fig. 5.0 — pipeline builder</span>
+        <h3>DAG Pipeline Builder</h3>
+        <p>A visual pipeline builder for a technical take-home: nodes connect on a ReactFlow canvas
+        up front, while a FastAPI backend validates the graph structure using Kahn's algorithm
+        to catch cycles before anything runs.</p>
+        <div class="tag-row">
+          <span class="tag">ReactFlow</span><span class="tag">FastAPI</span><span class="tag">Kahn's algo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMMUNITY ================= -->
+  <section class="section reveal">
+    <div class="community">
+      <div>
+        <span class="section-label" style="color:rgba(255,255,255,0.85)">Community</span>
+        <h2>Building rooms, not just code</h2>
+        <p>Leading GDG On Campus and co-running a hybrid hackathon has meant as much project
+        management, sponsor coordination, and people-wrangling as engineering.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><b>200+</b><span>students via GDG events</span></div>
+        <div class="stat"><b>300+</b><span>attendees at BlockVerse 2026</span></div>
+        <div class="stat"><b>30+</b><span>faculty involved</span></div>
+        <div class="stat"><b>3</b><span>industry sponsors</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <section class="footer reveal">
+    <div class="footer-cta">Open to SDE &amp; MLE roles — <em>let's talk.</em></div>
+    <div class="footer-links">
+      <div class="col">
+        <span class="mono" style="color:var(--sage-deep); letter-spacing:.1em; text-transform:uppercase; font-size:11px;">Contact</span>
+        <a href="mailto:namratapagariya1485@gmail.com">namratapagariya1485@gmail.com</a>
+        <a href="https://www.linkedin.com/in/namrata-pagariya/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/namratapagariya" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://leetcode.com/u/namratajain14/" target="_blank" rel="noopener">LeetCode</a>
+      </div>
+      <div class="col" style="text-align:right;">
+        <span class="mono" style="color:var(--sage-deep); letter-spacing:.1em; text-transform:uppercase; font-size:11px;">Based in</span>
+        <span>Nashik, Maharashtra</span>
+      </div>
+    </div>
+    <div class="signature">Namrata Pagariya</div>
+  </section>
+
+</div>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  } else {
+    els.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
