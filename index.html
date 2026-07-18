@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Namrata Pagariya — Portfolio</title>
+
+  <!-- stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- no favicon (prevents stray tab icon) -->
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <div class="container">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-left">
+        <div class="name">Namrata Pagariya</div>
+        <div class="sub hidden-sm">Front-End Developer • GDG Lead Organizer</div>
+      </div>
+      <div class="nav-right">
+        <a id="resumeLink" class="btn accent" href="/assets/Namrata_Pagariya_Web_devloper_intern.pdf" download>Download Resume</a>
+        <a id="linkedin" class="btn outline hidden-sm" href="https://www.linkedin.com/in/namrata-pagariya/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <button id="themeToggle" class="btn small">Theme</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <h1 class="hero-title">Hi I’m Namrata</h1>
+        <p class="hero-sub">3rd-year BE Computer Engineering student. I build interactive web apps, ML prototypes and IoT demos — focusing on clarity, performance and readable code.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn accent">See projects</a>
+          <a href="mailto:namratapagariya1485@gmail.com" class="btn outline">Contact</a>
+        </div>
+        <div class="tags">
+          <div class="chip card">Front-End — HTML • CSS • JS</div>
+          <div class="chip card">GDG Lead Organizer (2025–26)</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="profile-card card">
+          <div class="meta-small">Namrata Pagariya</div>
+          <div class="meta-big">Front-End · AI/ML · IoT</div>
+          <div class="meta-tiny">Nashik · Open to internships</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + LEADERSHIP -->
+    <section id="about-leadership" class="lead-wrap">
+      <div class="lead-card">
+        <div class="lead-title">GDG On Campus — Lead Organizer</div>
+        <div class="lead-role">Building communities, running events, shipping impact</div>
+        <div class="lead-body">
+          I lead the GDG On Campus chapter at my college, running workshops, technical events, and mentoring students. My focus is simple: build community, deliver useful learning experiences, and ship work that creates real opportunities for developers.
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW: Collapsible Projects panel -->
+    <section id="projects" class="projects-section">
+      <div id="projectsPanel" class="projects-panel" role="button" aria-expanded="false" tabindex="0">
+        <div class="projects-panel-left">
+          <div class="projects-panel-title">Projects</div>
+          <div class="projects-panel-sub">Click to reveal selected work</div>
+        </div>
+        <div class="projects-panel-right">
+          <div class="arrow" aria-hidden="true">⌄</div>
+        </div>
+      </div>
+
+      <!-- hidden content that expands -->
+      <div id="projectsContent" class="projects-content" aria-hidden="true">
+        <div class="projects-head">
+          <h2 class="projects-heading">All Projects</h2>
+          <div id="filters" class="filters-scroll"></div>
+        </div>
+
+        <div id="reposGrid" class="repos-grid" aria-live="polite">
+          <!-- project cards inserted by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS & CONTACT -->
+    <section class="three-col">
+      <div class="card p">
+        <h3>About</h3>
+        <p class="muted">Front-end developer building clean, accessible interfaces with attention to performance and polish. Comfortable with React, JS, and basic ML/IoT integration.</p>
+        <div class="muted small">Open to internships • available for freelance</div>
+      </div>
+
+      <div class="card p">
+        <h3>Skills</h3>
+        <ul class="muted small">
+          <li>Frontend: HTML, CSS, JavaScript</li>
+          <li>Tools: VS Code, Git, GitHub, Vercel, Firebase Studio</li>
+          <li>IoT: Arduino, basic sensors</li>
+        </ul>
+      </div>
+
+      <div class="card p">
+        <h3>Contact</h3>
+        <p class="muted">Email: <a href="mailto:namratapagariya1485@gmail.com">namratapagariya1485@gmail.com</a></p>
+        <form id="contactForm" class="contact-form">
+          <input id="cname" placeholder="Your name" required />
+          <input id="cemail" placeholder="Your email" required type="email" />
+          <textarea id="cmsg" placeholder="Message" required></textarea>
+          <button type="submit" class="btn accent">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer-flag">
+      Where thoughtful design meets clean engineering.
+    </footer>
+  </div>
+
+  <!-- Modal (no image) -->
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button id="modalClose" class="btn small">Close</button>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc" class="muted"></p>
+      <div class="modal-links" style="margin-top:10px;">
+        <a id="modalRepoLink" class="btn outline" target="_blank" rel="noreferrer">Open on GitHub</a>
+        <a id="modalZipLink" class="btn outline" target="_blank" rel="noreferrer">Download ZIP</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
